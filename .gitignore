@@ -1,1 +1,8 @@
+# JetBrains/PyCharm directory
+.idea/
 
+# VS-Code directory
+.vscode/
+
+# Python related
+__pycache__/
