@@ -42,7 +42,6 @@ class BankCustomer(DefaultCustomer):
 
     def _user_num_cards(self):
         self.num_cards = np.random.randint(1, self.max_num_cards+1)
-        # TODO: set limits for number of cards
 
     def _user_num_visits(self):
         self.num_visits = np.random.randint(0, 11)
