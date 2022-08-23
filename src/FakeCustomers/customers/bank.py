@@ -1,5 +1,5 @@
 import numpy as np
-from base import DefaultCustomer
+from FakeCustomers.customers.base import DefaultCustomer
 
 
 class BankCustomer(DefaultCustomer):

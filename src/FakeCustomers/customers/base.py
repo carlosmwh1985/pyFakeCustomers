@@ -6,7 +6,7 @@ class DefaultCustomer:
     """Class to create a default fake customer. It only includes
     the most relevant data.
 
-    By default the locale settings are set to Germany. They can
+    By default, the locale settings are set to Germany. They can
     be by initializing the class with a different value for
     client_locale."""
 

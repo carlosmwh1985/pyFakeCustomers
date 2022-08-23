@@ -2,7 +2,7 @@
 requires = ['numpy', 'faker']
 
 [project]
-name = "fakeCustomers"
+name = "FakeCustomers"
 version = "0.1.0"
 authors = [
     {name="Carlos Granados", email="carlosm.granadosc@gmail.com"},

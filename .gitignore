@@ -6,3 +6,8 @@
 
 # Python related
 __pycache__/
+
+# Build
+build/
+dist/
+*.egg-info/
