@@ -1,7 +1,7 @@
 import numpy as np
 
-from ..customers.base import DefaultCustomer
-from ..customers.bank import BankCustomer
+import FakeCustomers.customers.base as base
+import FakeCustomers.customers.bank as bank
 
 
 def fill_indices(fraction, total_number):
@@ -70,11 +70,11 @@ class FakerData:
 
     def _set_faker(self):
         if self.type_users == 'base':
-            self.user = DefaultCustomer()
+            self.user = base.DefaultCustomer()
             self.nan_cols = ['Address', 'Phone', 'Age']
         elif self.type_users == 'bank':
-            self.user = BankCustomer(min_val=self.credit_min, max_val=self.credit_max,
-                                     max_num_cards=self.max_num_cards)
+            self.user = bank.BankCustomer(min_val=self.credit_min, max_val=self.credit_max,
+                                          max_num_cards=self.max_num_cards)
             self.nan_cols = ['Avg_Credit_Limit', 'Total_Credit_Cards',
                              'Total_Visits_Bank', 'Total_Visits_Online',
                              'Total_Calls_Made']
@@ -180,9 +180,9 @@ if __name__ == '__main__':
     faker = FakerData(num_users=10)
     faker.create_list_users()
     fake_users = faker.get_list()
-    print('Default users: ' + fake_users)
+    print('Default users: {}'.format(fake_users))
 
     faker = FakerData(num_users=10, type_users='bank')
     faker.create_list_users()
     fake_users = faker.get_list()
-    print('Bank users: ' + fake_users)
+    print('\nBank users: {}'.format(fake_users))
