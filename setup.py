@@ -12,3 +12,5 @@ setup(
     author_email='carlosm.granadosc@gmail.com',
     description='A package to create fake customers'
 )
+
+# Note: run as python3 setup.py install --user
