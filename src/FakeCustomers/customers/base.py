@@ -10,19 +10,19 @@ class DefaultCustomer:
     be by initializing the class with a different value for
     client_locale."""
 
-    def __init__(self, client_locale='de_DE', country=None,
+    def __init__(self, id=None, client_locale='de_DE', country=None,
                  salutation=None, title=None, first_name=None, last_name=None,
                  age=None, address=None, plz=None, city=None, phone=None,
                  **kwargs):
         self.locale = client_locale
         self.genders = ['F', 'M', 'X']
         self.faker = Faker(self.locale)
-        self._start(salutation, title, first_name, last_name,
+        self._start(id, salutation, title, first_name, last_name,
                     age, address, plz, city, country, phone)
 
-    def _start(self, salutation, title, first_name, last_name,
+    def _start(self, id, salutation, title, first_name, last_name,
                age, address, plz, city, country, phone):
-        self.id = None
+        self.id = id
         self.gender = None
         self.salutation = salutation
         self.title = title
@@ -110,7 +110,8 @@ class DefaultCustomer:
         return f'Customer Name: {self.salutation} {self.title} {self.first_name} {self.last_name}'
 
     def __repr__(self):
-        return f'DefaultCustomer(salutation={self.salutation}, title={self.title}, first_name={self.first_name}, last_name={self.last_name}'
+        return f'DefaultCustomer(id={self.id}, salutation={self.salutation}, title={self.title},' \
+               f'first_name={self.first_name}, last_name={self.last_name}'
 
     def set_user(self):
         self._user_id()

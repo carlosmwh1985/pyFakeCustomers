@@ -8,14 +8,14 @@ class BankCustomer(DefaultCustomer):
 
     def __init__(self, min_val=3000.0, max_val=500000.0, max_num_cards=10,
                  avg_credit=0, num_cards=0, num_visits=0, num_online_visits=0, num_calls=0,
-                 client_locale='de_DE', country=None,
+                 client_locale='de_DE', id=None, country=None,
                  salutation=None, title=None, first_name=None, last_name=None,
                  age=None, address=None, plz=None, city=None, phone=None,
                  **kwargs):
 
         # Initialize super
         super(BankCustomer, self).__init__(
-            client_locale=client_locale, country=country,
+            client_locale=client_locale, id=id, country=country,
             salutation=salutation, title=title, first_name=first_name, last_name=last_name,
             age=age, address=address, plz=plz, city=city, phone=phone,
             kwargs=kwargs)
@@ -51,10 +51,10 @@ class BankCustomer(DefaultCustomer):
     def __str__(self):
         name = f'{self.salutation} {self.title} {self.first_name} {self.last_name}'
         credit_info = f'Avg. Credit {round(self.credit, 2)}, Num. Credit Cards: {self.num_cards}'
-        return 'Bank Customer Name: ' + name + '\nCredit Information: ' + credit_info
+        return f'Bank Customer Name: {name} \nCredit Information: {credit_info}'
 
     def __repr__(self):
-        return f'BankCustomer(salutation={self.salutation}, title={self.title}, first_name={self.first_name},' \
+        return f'BankCustomer(id={self.id}, salutation={self.salutation}, title={self.title}, first_name={self.first_name},' \
                f' last_name={self.last_name}, avg_credit={self.credit}, num_cards={self.num_cards},' \
                f' address={self.address}, plz={self.plz}, city={self.city}, self.phone={self.phone},' \
                f' country={self.country}, client_locale={self.locale})'
