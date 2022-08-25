@@ -5,7 +5,7 @@ setup(
     name='FakeCustomers',
     version='0.1.1',
     package_dir={"": "src"},
-    packages=find_packages('src'),
+    packages=find_packages('src', 'tests'),
     url='',
     license='MIT',
     author='Carlos Granados',
