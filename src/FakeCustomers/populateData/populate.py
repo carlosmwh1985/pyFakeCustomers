@@ -7,7 +7,11 @@ import FakeCustomers.customers.bank as bank
 def fill_indices(fraction, total_number):
     total_number: int
     num_indices = max(0, int(fraction * total_number))
-    return np.random.randint(0, total_number, num_indices)
+    indices = set()
+    while len(indices) < num_indices:
+        indices.add(np.random.randint(total_number))
+
+    return np.array(list(indices))
 
 
 class FakerData:
@@ -62,11 +66,11 @@ class FakerData:
         self.max_num_cards = kwargs.get('max_cards', 10)
 
         # Invalid data related params
-        self.frac_nans = kwargs.get('frac_nans', 0.0)
+        self.frac_nans = kwargs.get('frac_nans', 0)
 
         # Outlier generator related parameters
-        self.frac_out = kwargs.get('frac_out', 0.0)
-        self.error = kwargs.get('error', 0.0)
+        self.frac_out = kwargs.get('frac_out', 0)
+        self.error = kwargs.get('error', 0)
 
     def _set_faker(self):
         if self.type_users == 'base':
@@ -164,7 +168,7 @@ class FakerData:
                 # Insert NaNs and outliers in random positions (previously selected)
                 if i in self.indices_out:
                     self._modify_data()
-                elif i in self.indices_nan:
+                if i in self.indices_nan:
                     self._put_a_nan()
 
                 # Save self.user_data into list
@@ -186,3 +190,4 @@ if __name__ == '__main__':
     faker.create_list_users()
     fake_users = faker.get_list()
     print('\nBank users: {}'.format(fake_users))
+
